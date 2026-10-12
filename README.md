@@ -67,7 +67,7 @@ The legacy dollar-delimited damage factors can be loaded with `load_damage_coeff
 | `docs/` | Architecture, scope, privacy and migration notes |
 | `legacy/automotive/` | Original P1 scraping, calculations, data and images |
 | `legacy/instagram/` | Original P2 API script and CSV snapshots |
-| `legacy/notebooks/` | Original P3 notebook, kept byte-for-byte |
+| `legacy/notebooks/` | Original P3 financial-data notebook, with old authentication cookies redacted |
 
 ## Quality checks
 
@@ -82,7 +82,7 @@ GitHub Actions executes these checks for pushes and PRs. Live scrape/API tests a
 ## Scope and limitations
 
 - Legacy Selenium scripts use APIs removed in Selenium 4 and likely stale site selectors; they are preserved as reference implementations, not supported entry points. Browser binaries are not distributed with the maintained tree; modern Selenium can manage drivers if later browser automation is rebuilt.
-- The archived notebook is preserved, not converted to scripts. Its embedded outputs and historical data require a separate review before reuse.
+- The original P3 notebook contains BourseView financial-report scraping with 90 code cells and 37 saved outputs. Six hardcoded authentication cookie values were redacted from the current branch while preserving those outputs. Its original input dataset (`../boniadi.csv`) is missing and live endpoint compatibility is unverified. The **original 2022 Git commit still exposes the cookie values** until a separately authorized history rewrite; revoke or invalidate any still-active credentials.
 - Historical images, workbooks and sample CSVs are retained for traceability. Treat Instagram sample content and any embedded identifiers as potentially sensitive before republishing or redistributing.
 - No Docker image or deployment pipeline is introduced for this local, read-only tool collection. There is no verified server or scheduled job to deploy.
 
