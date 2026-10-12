@@ -1,0 +1,17 @@
+# Environments, caches and generated artifacts
+.venv/
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+build/
+dist/
+.local/
+output/
+*.log
+.DS_Store

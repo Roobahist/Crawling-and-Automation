@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "crawling-automation"
+version = "0.1.0"
+description = "Reusable educational automotive and social data collection utilities"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["beautifulsoup4>=4.12,<5", "requests>=2.32,<3"]
+
+[project.optional-dependencies]
+dev = ["ruff>=0.9"]
+legacy = ["selenium>=4.20"]
+
+[project.scripts]
+crawl-auto = "crawling_automation.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/crawling_automation"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
