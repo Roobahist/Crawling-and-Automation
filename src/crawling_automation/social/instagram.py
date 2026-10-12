@@ -11,6 +11,8 @@ from dataclasses import dataclass
 from datetime import date, datetime, time, timezone
 from typing import Mapping
 
+from requests.exceptions import HTTPError
+
 
 class GraphAPIError(RuntimeError):
     """An API response could not be used by the caller."""
@@ -58,7 +60,11 @@ class InstagramClient:
             params=params,
             timeout=self._settings.timeout_seconds,
         )
-        response.raise_for_status()
+        try:
+            response.raise_for_status()
+        except HTTPError as exc:
+            status = getattr(response, "status_code", "unknown")
+            raise GraphAPIError(f"Graph API request failed with HTTP status {status}") from None
         try:
             payload = response.json()
         except ValueError as exc:
