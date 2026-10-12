@@ -62,7 +62,7 @@ class InstagramClient:
         )
         try:
             response.raise_for_status()
-        except HTTPError as exc:
+        except HTTPError:
             status = getattr(response, "status_code", "unknown")
             raise GraphAPIError(f"Graph API request failed with HTTP status {status}") from None
         try:
